@@ -1,0 +1,18 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.MainPage"
+             BackgroundImageSource="https://i.pinimg.com/474x/02/06/04/0206041f4dfb2e87986ed3acf3f681d8.jpg">
+
+    <Grid ColumnDefinitions="1*" RowDefinitions="3*, 1*, 1*, 6*, 0.1*, 6*, 7*, 3*, 0.1*">
+        <Entry Grid.Row="0" PlaceholderColor="WhiteSmoke" TextColor="WhiteSmoke"/>
+        <Label Grid.Row="1" Text="22.2.2022" HorizontalTextAlignment="Center" TextColor="WhiteSmoke"/>
+        <Label Grid.Row="3" Text="12°C" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="80" TextColor="WhiteSmoke"/>
+        <Label Grid.Row="5" Text="Sunce" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="20" TextColor="WhiteSmoke"/>
+        <Grid Grid.Row="7" ColumnDefinitions="1*,1*,1*" RowDefinitions="1*">
+            <Button Grid.Column="0" Text="A"/>
+            <Button Grid.Column="1" Text="B"/>
+            <Button Grid.Column="2" Text="C"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>
