@@ -1,0 +1,8 @@
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" class="bi bi-clock" fill="currentColor">
+
+ <g>
+  <title>Layer 1</title>
+  <path fill="#ffffff" id="svg_1" d="m8,3.5a0.5,0.5 0 0 0 -1,0l0,5.5a0.5,0.5 0 0 0 0.252,0.434l3.5,2a0.5,0.5 0 0 0 0.496,-0.868l-3.248,-1.856l0,-5.21z"/>
+  <path fill="#ffffff" id="svg_2" d="m8,16a8,8 0 1 0 0,-16a8,8 0 0 0 0,16zm7,-8a7,7 0 1 1 -14,0a7,7 0 0 1 14,0z"/>
+ </g>
+</svg>

@@ -1,5 +1,6 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:v="clr-namespace:WeatherApp.WidgetComponents"
              x:Class="WeatherApp.MainPage"
              BackgroundImageSource="https://i.pinimg.com/474x/02/06/04/0206041f4dfb2e87986ed3acf3f681d8.jpg">
 
@@ -9,10 +10,33 @@
         <Label Grid.Row="3" Text="12°C" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="80" TextColor="WhiteSmoke"/>
         <Label Grid.Row="5" Text="Sunce" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="20" TextColor="WhiteSmoke"/>
         <Grid Grid.Row="7" ColumnDefinitions="1*,1*,1*" RowDefinitions="1*">
-            <Button Grid.Column="0" Text="A"/>
-            <Button Grid.Column="1" Text="B"/>
-            <Button Grid.Column="2" Text="C"/>
+            <Button Grid.Column="0" />
+            <Button Grid.Column="1" />
+            <Button Grid.Column="2" />
+            <ImageButton Source="Icons/HomePageIcon.svg"/>
         </Grid>
     </Grid>
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#0d659d" Offset="0.1" />
+                        <GradientStop Color="#005c95" Offset="0.19" />
+                        <GradientStop Color="#006dac" Offset="0.46" />
+                        <GradientStop Color="#275dc6" Offset="0.74" />
+                        <GradientStop Color="#1337cd" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="WidthRequest" Value="50"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BorderWidth" Value="3"/>
+            <Setter Property="BorderColor" Value="WhiteSmoke"/>
+        </Style>
+    </ContentPage.Resources>
 
 </ContentPage>
