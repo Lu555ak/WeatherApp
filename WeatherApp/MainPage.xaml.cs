@@ -11,6 +11,7 @@ namespace WeatherApp
 {
     public partial class MainPage : ContentPage
     {
+        string URL;
         const string appid = "";
         string cityName = "Samobor";
         public MainPage()
@@ -21,12 +22,11 @@ namespace WeatherApp
 
         void GetCurrentWeather()
         {
+            URL = "https://api.openweathermap.org/data/2.5/weather?q=Samobor&appid=3b7c3947e8e22c86b32d822ad4c3a6b6";
             using (WebClient web = new WebClient())
-            {
-                string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q=Samobor&appid=3b7c3947e8e22c86b32d822ad4c3a6b6");
-                var json = web.DownloadString(url);
-            }
-            
+            { 
+                var json = web.DownloadString(URL);
+            }        
         }
     }
 }
