@@ -20,7 +20,26 @@ public class CurrentWeatherInfo
 
 	public class main
 	{
-		public double temp { get; set; }
+		public double temp
+		{
+			get => temp;
+			set => Math.Round(value);
+		}
+		public double feels_like
+		{
+			get => feels_like;
+			set => Math.Round(value);
+		}
+		public double temp_min
+		{
+			get => temp_min;
+			set => Math.Round(value);
+		}
+		public double temp_max
+		{
+			get => temp_max;
+			set => Math.Round(value);
+		}
 		public double pressure { get; set; }
 		public double humidity { get; set; }
 	}

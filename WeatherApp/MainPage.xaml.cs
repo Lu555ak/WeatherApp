@@ -18,11 +18,10 @@ namespace WeatherApp
         WeatherWeekPage WeatherWeek = new WeatherWeekPage();
 
         const string appid = "3b7c3947e8e22c86b32d822ad4c3a6b6";
-        string cityName = "Samobor";
         public MainPage()
         {
             InitializeComponent();
-            GetCurrentWeather(cityName);
+            
 
             CurrentPage.Content = weatherNow.Content;
         }
@@ -31,10 +30,14 @@ namespace WeatherApp
         {
             using (WebClient web = new WebClient())
             {
-                string url = String.Format("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + appid);
+                string url = String.Format("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + appid);
                 var json = web.DownloadString(url);
                 var result = JsonConvert.DeserializeObject<CurrentWeatherInfo.root>(json);
-                CurrentWeatherInfo.root outPut = result; 
+                CurrentWeatherInfo.root outPut = result;
+
+                weatherNow.currentTemperature = Convert.ToString(outPut.main.temp);
+                weatherNow.currentRealFeel = Convert.ToString(outPut.main.feels_like);
+                weatherNow.currentWeather = Convert.ToString(outPut.weatherList[1]);
             }        
         }
 
@@ -55,7 +58,7 @@ namespace WeatherApp
 
         void SearchBar_Completed(object sender, EventArgs args)
         {
-
+            GetCurrentWeather(Searchbar.Text);
         }
     }
 }
