@@ -8,6 +8,7 @@ using System.Net;
 using Newtonsoft.Json;  
 using Xamarin.Forms;
 using WeatherApp.Pages;
+using WeatherApp.CustomUI;
 
 namespace WeatherApp
 {
@@ -16,13 +17,11 @@ namespace WeatherApp
         WeatherNowPage weatherNow = new WeatherNowPage();
         WeatherDayPage weatherDay = new WeatherDayPage();
         WeatherWeekPage WeatherWeek = new WeatherWeekPage();
-
         const string appid = "3b7c3947e8e22c86b32d822ad4c3a6b6";
-        string cityName = "Samobor";
         public MainPage()
         {
             InitializeComponent();
-            GetCurrentWeather(cityName);
+            GetCurrentWeather(Searchbar.Text);
 
             CurrentPage.Content = weatherNow.Content;
         }
@@ -35,6 +34,7 @@ namespace WeatherApp
                 var json = web.DownloadString(url);
                 var result = JsonConvert.DeserializeObject<CurrentWeatherInfo.root>(json);
                 CurrentWeatherInfo.root outPut = result;
+                
             }        
         }
 
