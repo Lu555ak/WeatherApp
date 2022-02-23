@@ -1,28 +1,37 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:v="clr-namespace:WeatherApp.WidgetComponents"
+             xmlns:a="clr-namespace:WeatherApp.CustomUI"
              x:Class="WeatherApp.MainPage"
              BackgroundImageSource="https://i.pinimg.com/474x/02/06/04/0206041f4dfb2e87986ed3acf3f681d8.jpg">
 
     <Grid ColumnDefinitions="1*" RowDefinitions="3*, 1*, 1*, 6*, 0.1*, 6*, 7*, 3*, 0.1*">
         <Entry Grid.Row="0" PlaceholderColor="WhiteSmoke" TextColor="WhiteSmoke"/>
-        <Label Grid.Row="1" Text="22.2.2022" HorizontalTextAlignment="Center" TextColor="WhiteSmoke"/>
+        <Label x:Name="Date" Grid.Row="1" Text="22.2.2022" HorizontalTextAlignment="Center" FontSize="1" TextColor="WhiteSmoke"/>
         <Label Grid.Row="3" Text="12°C" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="80" TextColor="WhiteSmoke"/>
         <Label Grid.Row="5" Text="Sunce" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="20" TextColor="WhiteSmoke"/>
         <Grid Grid.Row="7" ColumnDefinitions="1*,1*,1*" RowDefinitions="1*">
-            <ImageButton Source="HomePageIcon.png" Grid.Column="0" />
-            <ImageButton Source="HourMenu.png" Grid.Column="1" />
-            <ImageButton Source="WeekMenu.png" Grid.Column="2" />
+            <a:NavigationButton Grid.Column="0" Source="HomePageIcon.png"/>
+            <a:NavigationButton Grid.Column="1" Source="HourMenu.png"/>
+            <a:NavigationButton Grid.Column="2" Source="WeekMenu.png"/>
         </Grid>
     </Grid>
 
     <ContentPage.Resources>
-        <Style TargetType="ImageButton">
-            <Setter Property="BackgroundColor" Value="Red"/>
-            <Setter Property="WidthRequest" Value="50"/>
-            <Setter Property="HeightRequest" Value="40"/>
+        <Style TargetType="a:NavigationButton">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                        <GradientStop Color="#1337cd" Offset="0"/>
+                        <GradientStop Color="#275dc6" Offset="0.25"/>
+                        <GradientStop Color="#2353b1 " Offset="0.5"/>
+                        <GradientStop Color="#275dc6" Offset="0.75"/>
+                        <GradientStop Color="#1337cd" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
             <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="CornerRadius" Value="15"/>
         </Style>
     </ContentPage.Resources>
-
 </ContentPage>
