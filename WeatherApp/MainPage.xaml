@@ -5,7 +5,8 @@
              BackgroundImageSource="https://htmlcolors.com/gradients-images/108-blue.jpg">
     
     <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*">
-        <a:BorderlessEntry Grid.Row="0"
+        <a:BorderlessEntry x:Name="Searchbar"
+                           Grid.Row="0"
                            HorizontalTextAlignment="Center"
                            FontAttributes="Bold"
                            FontSize="22"
