@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace WeatherApp.WidgetComponents
+namespace WeatherApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DayWidget : ContentView
+    public partial class WeatherDayPage : ContentPage
     {
-        public DayWidget()
+        public WeatherDayPage()
         {
             InitializeComponent();
         }
