@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WeatherApp.Pages
@@ -15,6 +9,22 @@ namespace WeatherApp.Pages
         public WeatherNowPage()
         {
             InitializeComponent();
+        }
+
+        public string currentTemperature
+        {
+            get => CurrentTemperature.Text;
+            set => CurrentTemperature.Text = value;
+        }
+        public string currentRealFeel
+        {
+            get => CurrentRealFeel.Text;
+            set => CurrentRealFeel.Text = value;
+        }
+        public string currentWeather
+        {
+            get => CurrentWeather.Text;
+            set => CurrentWeather.Text = value;
         }
     }
 }

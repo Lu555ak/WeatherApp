@@ -34,7 +34,7 @@ namespace WeatherApp
                 string url = String.Format("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + appid);
                 var json = web.DownloadString(url);
                 var result = JsonConvert.DeserializeObject<CurrentWeatherInfo.root>(json);
-                CurrentWeatherInfo.root outPut = result;
+                CurrentWeatherInfo.root outPut = result; 
             }        
         }
 
@@ -53,5 +53,9 @@ namespace WeatherApp
             CurrentPage.Content = WeatherWeek.Content;
         }
 
+        void SearchBar_Completed(object sender, EventArgs args)
+        {
+
+        }
     }
 }

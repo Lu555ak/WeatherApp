@@ -4,6 +4,6 @@
              x:Class="WeatherApp.Pages.WeatherDayPage">
     
     <ContentPage.Content>
-        <Label Text="da"/>
+        <ListView x:Name="WeatherDayList"/>
     </ContentPage.Content>
 </ContentPage>
