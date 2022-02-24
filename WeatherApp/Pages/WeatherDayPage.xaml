@@ -2,8 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Pages.WeatherDayPage">
-    
+
     <ContentPage.Content>
-        <ListView x:Name="WeatherDayList"/>
+
+        <Grid ColumnDefinitions="1*, 10*, 1*" RowDefinitions="20*, 1*">
+            <ListView x:Name="WeatherDayList" 
+                  Grid.Row="0" 
+                  Grid.Column="1" 
+                  SeparatorVisibility="None" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <BoxView CornerRadius="20"
+                                   Background="{StaticResource BR}"
+                                   Margin="0,0,0,10"/>
+                                <Grid ColumnDefinitions="1*, 1*, 1*" 
+                                      RowDefinitions="1*"
+                                      Margin="0,0,0,10">
+                                    <Label Text="{Binding Hour}" 
+                                       Grid.Column="0"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"
+                                       Margin="10,0,0,0"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontAttributes="Bold"/>
+                                    <Image Source="{Binding WeatherIcon}" 
+                                       Grid.Column="1"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       WidthRequest="25"
+                                       HeightRequest="25"/>
+                                    <Label Text="{Binding Temperature}" 
+                                       Grid.Column="2"
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center"
+                                       Margin="0,0,10,0"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontAttributes="Bold"/>
+                                </Grid>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

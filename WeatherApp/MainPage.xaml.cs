@@ -58,7 +58,7 @@ namespace WeatherApp
 
         void SearchBar_Completed(object sender, EventArgs args)
         {
-            GetCurrentWeather(Searchbar.Text);
+            GetCurrentWeather("Samobor");
         }
     }
 }
