@@ -10,14 +10,14 @@
                    HorizontalOptions="Center" 
                    VerticalOptions="End" 
                    FontSize="80"
-                   TextColor="WhiteSmoke"/>
+                   TextColor="{StaticResource PrimaryColor}"/>
             <Label x:Name="CurrentRealFeel" 
                    Grid.Row="1" 
                    Text="RealFeel: 12°C" 
                    HorizontalOptions="Center" 
                    VerticalOptions="Start" 
                    FontSize="10"
-                   TextColor="WhiteSmoke"/>
+                   TextColor="{StaticResource PrimaryColor}"/>
             <Line Grid.Row="2"
                   X1="0" Y1="0"
                   X2="200" Y2="0"
@@ -32,7 +32,7 @@
                    VerticalOptions="Start" 
                    FontSize="40"
                    FontAttributes="Bold"
-                   TextColor="WhiteSmoke"/>
+                   TextColor="{StaticResource PrimaryColor}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -10,14 +10,14 @@
                            HorizontalTextAlignment="Center"
                            FontAttributes="Bold"
                            FontSize="22"
-                           TextColor="WhiteSmoke"
+                           TextColor="{StaticResource PrimaryColor}"
                            Completed="SearchBar_Completed" />
         <Label x:Name="Date" 
                Grid.Row="1" 
                Text="22.2.2022" 
                HorizontalTextAlignment="Center" 
                FontSize="10" 
-               TextColor="WhiteSmoke"/>
+               TextColor="{StaticResource PrimaryColor}"/>
         
         <ContentView x:Name="CurrentPage" Grid.Row="2"/>
         
@@ -49,7 +49,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="a:NavigationButton">
-            <Setter Property="Background" Value="{StaticResource BR}"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryGradient}"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="CornerRadius" Value="15"/>
         </Style>

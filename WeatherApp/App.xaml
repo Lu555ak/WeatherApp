@@ -4,7 +4,7 @@
              x:Class="WeatherApp.App">
 
     <Application.Resources>
-        <LinearGradientBrush x:Key="BR" EndPoint="1,0.6" StartPoint="-1,-0.9">
+        <LinearGradientBrush x:Key="PrimaryGradient" EndPoint="1,0.6" StartPoint="-1,-0.9">
             <GradientStop Color="#36096d" Offset="0.2"/>
             <GradientStop Color="#009ffd " Offset="0.74"/>
             <GradientStop Color="#37d5d6 " Offset="1"/>
