@@ -35,6 +35,7 @@ namespace WeatherApp
                 var result = JsonConvert.DeserializeObject<CurrentWeatherInfo.root>(json);
                 CurrentWeatherInfo.root outPut = result;
 
+                
                 weatherNow.currentTemperature = Convert.ToString(outPut.main.temp);
                 weatherNow.currentRealFeel = Convert.ToString(outPut.main.feels_like);
                 weatherNow.currentWeather = Convert.ToString(outPut.weatherList[1]);
@@ -58,7 +59,7 @@ namespace WeatherApp
 
         void SearchBar_Completed(object sender, EventArgs args)
         {
-            GetCurrentWeather(Searchbar.Text);
+            GetCurrentWeather("Samobor");
         }
     }
 }
