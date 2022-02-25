@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.CustomUI.WeatherDayWidget"
+             WidthRequest="50"
+             HeightRequest="50">
+    <ContentView.Content>
+        <Grid>
+            <BoxView CornerRadius="20"
+                     Background="{StaticResource PrimaryGradient}"/>
+            <Grid ColumnDefinitions="1*, 1*"
+                  RowDefinitions="1*, 1*">
+                <Label x:Name="DayLabel"
+                       Text="{Binding Day}" 
+                       Grid.ColumnSpan="1"
+                       Grid.Row="0"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       TextColor="{StaticResource PrimaryColor}"
+                       FontAttributes="Bold"/>
+                <Image x:Name="WeatherImage"
+                       Source="{Binding WeatherIcon}" 
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       WidthRequest="25"
+                       HeightRequest="25"/>
+                <Label x:Name="TemperatureLabel"
+                       Text="{Binding Temperature}" 
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       TextColor="{StaticResource PrimaryColor}"
+                       FontAttributes="Bold"/>
+            </Grid>
+        </Grid>
+
+        <!--<Grid>
+            <BoxView CornerRadius="20"
+                     Background="{StaticResource PrimaryGradient}"/>
+            <Grid ColumnDefinitions="1*, 1*"
+                  RowDefinitions="1* 1*">
+                <Label x:Name="DayLabel"
+                       Text="{Binding Day}" 
+                       Grid.ColumnSpan="1"
+                       Grid.Row="0"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                       TextColor="{StaticResource PrimaryColor}"
+                       FontAttributes="Bold"/>
+                <Image x:Name="WeatherImage"
+                       Source="{Binding WeatherIcon}" 
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       WidthRequest="25"
+                       HeightRequest="25"/>
+                <Label x:Name="TemperatureLabel"
+                       Text="{Binding Temperature}" 
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                       TextColor="{StaticResource PrimaryColor}"
+                       FontAttributes="Bold"/>
+            </Grid>
+        </Grid>-->
+    </ContentView.Content>
+</ContentView>

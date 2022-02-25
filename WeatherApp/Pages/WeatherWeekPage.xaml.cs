@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WeatherApp.CustomUI;
 
 namespace WeatherApp.Pages
 {
@@ -14,7 +15,7 @@ namespace WeatherApp.Pages
     {
         public WeatherWeekPage()
         {
-            InitializeComponent();
+            InitializeComponent();       
         }
     }
 }

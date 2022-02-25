@@ -1,12 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:a="clr-namespace:WeatherApp.CustomUI"
              x:Class="WeatherApp.Pages.WeatherWeekPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="DA!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+       <!-- <Grid ColumnDefinitions="1*, 10*, 1*">
+            <Grid Grid.Column="1"
+                  ColumnDefinitions="1*, 1*">
+                <Grid x:Name="Left"
+                      Grid.Column="0"
+                      RowDefinitions="1*, 3*, 1*, 3*, 1*, 3*, 1*, 3*">
+                </Grid>
+                <Grid x:Name="Right"
+                      Grid.Column="1"
+                      RowDefinitions="1*, 1*, 3*, 1*, 3*, 1*, 3*, 3*">
+                </Grid>
+            </Grid>
+        </Grid> -->
+
+        <a:WeatherDayWidget Day="Neznam" Temperature="Idk"/>
+
     </ContentPage.Content>
 </ContentPage>
