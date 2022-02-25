@@ -8,6 +8,7 @@
             WeatherIcon = weatherIcon;
             Temperature = temperature;
         }
+        public WeatherHourWidget() {}
 
         public string Hour { get; set; }
         public string WeatherIcon { get; set; }

@@ -11,7 +11,7 @@ using WeatherApp.CustomUI;
 namespace WeatherApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WeatherWeekPage : ContentPage
+    public partial class WeatherWeekPage : ContentView
     {
         public WeatherWeekPage()
         {

@@ -1,6 +1,7 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:a="clr-namespace:WeatherApp.CustomUI"
+             xmlns:page="clr-namespace:WeatherApp.Pages"
              x:Class="WeatherApp.MainPage"
              BackgroundImageSource="https://htmlcolors.com/gradients-images/108-blue.jpg">
     
@@ -18,8 +19,10 @@
                HorizontalTextAlignment="Center" 
                FontSize="10" 
                TextColor="{StaticResource PrimaryColor}"/>
-        
-        <ContentView x:Name="CurrentPage" Grid.Row="2"/>
+
+        <page:WeatherNowPage x:Name="WeatherNowPage" Grid.Row="2"/>
+        <page:WeatherDayPage x:Name="WeatherDayPage" Grid.Row="2"/>
+        <page:WeatherWeekPage x:Name="WeatherWeekPage" Grid.Row="2"/>
         
         <Grid Grid.Row="3" 
               ColumnDefinitions="1*,1*,1*" 

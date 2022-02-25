@@ -4,7 +4,7 @@ using Xamarin.Forms.Xaml;
 namespace WeatherApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WeatherNowPage : ContentPage
+    public partial class WeatherNowPage : ContentView
     {
         public WeatherNowPage()
         {
