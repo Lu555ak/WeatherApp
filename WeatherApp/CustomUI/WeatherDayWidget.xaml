@@ -12,9 +12,9 @@
                   RowDefinitions="1*, 1*">
                 <Label x:Name="DayLabel"
                        Text="{Binding Day}" 
-                       Grid.ColumnSpan="1"
+                       Grid.ColumnSpan="2"
                        Grid.Row="0"
-                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
                        VerticalTextAlignment="Center"
                        TextColor="{StaticResource PrimaryColor}"
                        FontAttributes="Bold"/>

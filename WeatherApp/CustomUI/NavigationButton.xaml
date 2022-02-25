@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.CustomUI.NavigationButton">
     <ContentView.Content>
-        <Grid>
-            <Button x:Name="BackgroundButton" Background="{Binding BackgroundB}" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="{Binding CornerRadius}" />
+        <Grid ColumnDefinitions="50" RowDefinitions="auto">
+            <Button x:Name="BackgroundButton" Background="{Binding BackgroundB}" BorderColor="{DynamicResource PrimaryColor}" BorderWidth="{Binding BorderWidth}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="{Binding CornerRadius}" />
             <Image x:Name="Image" Source="{Binding Source}" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent"/>
         </Grid>
     </ContentView.Content>

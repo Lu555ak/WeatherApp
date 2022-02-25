@@ -26,18 +26,27 @@ namespace WeatherApp
             WeatherNowPage.IsVisible = true;
             WeatherDayPage.IsVisible = false;
             WeatherWeekPage.IsVisible = false;
+            WeatherNowButton.BorderWidth = 2;
+            WeatherDayButton.BorderWidth = 0;
+            WeatherWeekButton.BorderWidth = 0;
         }
         void WeatherDayPageActive()
         {
             WeatherNowPage.IsVisible = false;
             WeatherDayPage.IsVisible = true;
             WeatherWeekPage.IsVisible = false;
+            WeatherNowButton.BorderWidth = 0;
+            WeatherDayButton.BorderWidth = 2;
+            WeatherWeekButton.BorderWidth = 0;
         }
         void WeatherWeekPageActive()
         {
             WeatherNowPage.IsVisible = false;
             WeatherDayPage.IsVisible = false;
             WeatherWeekPage.IsVisible = true;
+            WeatherNowButton.BorderWidth = 0;
+            WeatherDayButton.BorderWidth = 0;
+            WeatherWeekButton.BorderWidth = 2;
         }
 
         void RefreshWeather(string cityName)

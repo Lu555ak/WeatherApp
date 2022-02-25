@@ -9,6 +9,7 @@ namespace WeatherApp.CustomUI
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(NavigationButton), propertyChanged: CornerRadiusUpdated);
         public static readonly BindableProperty SourceProperty = BindableProperty.Create(nameof(Source), typeof(string), typeof(NavigationButton), propertyChanged: SourceUpdated);
         public static readonly BindableProperty BackgroundProperty = BindableProperty.Create(nameof(Background), typeof(Brush), typeof(NavigationButton), propertyChanged: BackgroundUpdated);
+        public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create(nameof(BorderWidth), typeof(int), typeof(NavigationButton), propertyChanged: BorderWidthUpdated);
 
         public int CornerRadius
         {
@@ -26,6 +27,12 @@ namespace WeatherApp.CustomUI
         {
             get => (Brush)this.GetValue(BackgroundProperty);
             set => this.SetValue(BackgroundProperty, value);
+        }
+        
+        public int BorderWidth
+        {
+            get => (int)this.GetValue(BorderWidthProperty);
+            set => this.SetValue(BorderWidthProperty, value);
         }
 
         private static void CornerRadiusUpdated(object sender, object oldValue, object newValue)
@@ -49,6 +56,14 @@ namespace WeatherApp.CustomUI
             if (sender is NavigationButton navigationButton && newValue is Brush newBrush)
             {
                 navigationButton.BackgroundButton.Background = newBrush;
+            }
+        }
+
+        private static void BorderWidthUpdated(object sender, object oldValue, object newValue)
+        {
+            if (sender is NavigationButton navigationButton && newValue is int newInt)
+            {
+                navigationButton.BackgroundButton.BorderWidth = newInt;
             }
         }
 

@@ -4,21 +4,28 @@
              xmlns:a="clr-namespace:WeatherApp.CustomUI"
              x:Class="WeatherApp.Pages.WeatherWeekPage">
     <ContentView.Content>
-       <!-- <Grid ColumnDefinitions="1*, 10*, 1*">
-            <Grid Grid.Column="1"
-                  ColumnDefinitions="1*, 1*">
+        <Grid ColumnDefinitions="1*, 10*, 1*">
+            <Grid x:Name="Da" Grid.Column="1"
+                  ColumnDefinitions="5*, 1*, 5*">
                 <Grid x:Name="Left"
                       Grid.Column="0"
-                      RowDefinitions="1*, 3*, 1*, 3*, 1*, 3*, 1*, 3*">
+                      RowDefinitions="0*, 3*, 1*, 3*, 1*, 3*, 1*, 3*, 1*">
+                    <a:WeatherDayWidget x:Name="Day1" Grid.Row="1"/>
+                    <a:WeatherDayWidget x:Name="Day3" Grid.Row="3"/>
+                    <a:WeatherDayWidget x:Name="Day5" Grid.Row="5"/>
+                    <a:WeatherDayWidget x:Name="Day7" Grid.Row="7"/>
                 </Grid>
                 <Grid x:Name="Right"
-                      Grid.Column="1"
-                      RowDefinitions="1*, 1*, 3*, 1*, 3*, 1*, 3*, 3*">
+                      Grid.Column="2"
+                      RowDefinitions="0*, 1*, 3*, 1*, 3*, 1*, 3*, 3*">
+                    <a:WeatherDayWidget x:Name="Day2" Grid.Row="2"/>
+                    <a:WeatherDayWidget x:Name="Day4" Grid.Row="4"/>
+                    <a:WeatherDayWidget x:Name="Day6" Grid.Row="6"/>
                 </Grid>
             </Grid>
-        </Grid> -->
+        </Grid>
 
-        <a:WeatherDayWidget Day="Neznam" Temperature="Idk"/>
+
 
     </ContentView.Content>
 </ContentView>
