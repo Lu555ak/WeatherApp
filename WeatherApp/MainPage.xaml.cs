@@ -49,8 +49,23 @@ namespace WeatherApp
             WeatherNowPage.currentWeather = weatherInfo.weather[0].main.ToString().ToUpper();
 
             // Refresh WeatherDayPage
-
+            OneCallWeatherInfo.Root weatherInfo1C = DeserializeData.ReturnOneCallWeatherInfo(weatherInfo.coord.lat, weatherInfo.coord.lon);
+            for(int i=0;i<24;i++)
+            {
+                int i1 = i++;
+                WeatherDayPage.DataSource[i].Hour = UnixTimeStampToDateTime(weatherInfo1C.hourly[i].dt).ToString();
+                WeatherDayPage.DataSource[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
+                //WeatherDayPage.DataSource[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[i].icon.ToString() + ".png";
+            }
             // Refresh WeatherWeekPage
+        }
+
+        DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dtDateTime;
         }
     }
 }

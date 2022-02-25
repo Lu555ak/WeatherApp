@@ -18,9 +18,26 @@ namespace WeatherApp.Data
             }
         }
 
+
+        private static T DownloadSeralized1CData<T>(string lat, string lon)
+        {
+            string url1C = string.Format("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,current&units=metric&appid=" + appid);
+            using (WebClient wc1C = new WebClient())
+            {
+                var json1C = string.Empty;
+                json1C = wc1C.DownloadString(url1C);
+                return JsonConvert.DeserializeObject<T>(json1C);
+            }
+        }
+
         public static CurrentWeatherInfo.Root ReturnCurrentWeatherInfo(string cityName)
         {
             return DownloadSeralizedData<CurrentWeatherInfo.Root>(cityName);
+        }
+
+        public static OneCallWeatherInfo.Root ReturnOneCallWeatherInfo(double lat, double lon)
+        {
+            return DownloadSeralized1CData<OneCallWeatherInfo.Root>(lat.ToString(), lon.ToString());
         }
     }
 }
