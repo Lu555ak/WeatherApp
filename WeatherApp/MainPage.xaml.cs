@@ -22,7 +22,11 @@ namespace WeatherApp
         void WeatherNowPageButton_Click(object sender, EventArgs args) => WeatherNowPageActive();
         void WeatherDayPageButton_Click(object sender, EventArgs args) => WeatherDayPageActive();
         void WeatherWeekPageButton_Click(object sender, EventArgs args) => WeatherWeekPageActive();
-        void SearchBar_Completed(object sender, EventArgs args) => RefreshWeather(Searchbar.Text);
+        void SearchBar_Completed(object sender, EventArgs args)
+        {
+            Searchbar.Text = Searchbar.Text.ToUpper();
+            RefreshWeather(Searchbar.Text);
+        }
 
         // Actions
         void WeatherNowPageActive()
@@ -65,18 +69,16 @@ namespace WeatherApp
             OneCallWeatherInfo.Root weatherInfo1C = DeserializeData.ReturnOneCallWeatherInfo(weatherInfo.coord.lat, weatherInfo.coord.lon);
             for(int i=0;i<24;i++)
             {
-                WeatherDayPage.DataSource[i].Hour = UnixTimeStampToHour(weatherInfo1C.hourly[i].dt).ToString() + ":00";
-                WeatherDayPage.DataSource[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
-                WeatherDayPage.DataSource[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[0].icon.ToString() + "@4x.png";
+                WeatherDayPage[i].Hour = UnixTimeStampToHour(weatherInfo1C.hourly[i].dt).ToString() + ":00";
+                WeatherDayPage[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
+                WeatherDayPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[0].icon.ToString() + "@4x.png";
             }
             WeatherDayPage.Refresh();
 
             // Refresh WeatherWeekPage
-            WeatherWeekPage.DataSource[0].Day = "Monday".ToUpper();
-            WeatherWeekPage.DataSource[0].Temperature = "10°C";
-            WeatherWeekPage.DataSource[0].WeatherIcon = "https://openweathermap.org/img/wn/10d@4x.png";
-
-            WeatherWeekPage.Refresh();
+            WeatherWeekPage[0].Day = "Monday".ToUpper();
+            WeatherWeekPage[0].Temperature = "10°C";
+            WeatherWeekPage[0].WeatherIcon = "https://openweathermap.org/img/wn/10d@4x.png";
         }
 
         int UnixTimeStampToHour(int unixTimeStamp)
