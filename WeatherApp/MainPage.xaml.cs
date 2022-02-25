@@ -67,14 +67,14 @@ namespace WeatherApp
             {
                 WeatherDayPage.DataSource[i].Hour = UnixTimeStampToHour(weatherInfo1C.hourly[i].dt).ToString() + ":00";
                 WeatherDayPage.DataSource[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
-                WeatherDayPage.DataSource[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[0].icon.ToString() + ".png";
+                WeatherDayPage.DataSource[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[0].icon.ToString() + "@4x.png";
             }
             WeatherDayPage.Refresh();
 
             // Refresh WeatherWeekPage
             WeatherWeekPage.DataSource[0].Day = "Monday".ToUpper();
             WeatherWeekPage.DataSource[0].Temperature = "10°C";
-            WeatherWeekPage.DataSource[0].WeatherIcon = "https://openweathermap.org/img/wn/10d.png";
+            WeatherWeekPage.DataSource[0].WeatherIcon = "https://openweathermap.org/img/wn/10d@4x.png";
 
             WeatherWeekPage.Refresh();
         }
