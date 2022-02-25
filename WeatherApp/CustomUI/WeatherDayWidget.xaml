@@ -23,7 +23,7 @@
                        Grid.Column="0"
                        Grid.Row="1"
                        HorizontalOptions="Center"
-                       VerticalOptions="Center"
+                       VerticalOptions="StartAndExpand"
                        WidthRequest="25"
                        HeightRequest="25"/>
                 <Label x:Name="TemperatureLabel"
@@ -31,7 +31,7 @@
                        Grid.Column="1"
                        Grid.Row="1"
                        HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"
+                       VerticalTextAlignment="Start"
                        TextColor="{StaticResource PrimaryColor}"
                        FontAttributes="Bold"/>
             </Grid>

@@ -14,6 +14,11 @@ namespace WeatherApp.Pages
             InitializeComponent(); 
             for (int i = 0; i < 24; i++)
                 DataSource.Add(new WeatherHourWidget());
+        }
+
+        public void Refresh()
+        {
+            WeatherDayList.ItemsSource = null;
             WeatherDayList.ItemsSource = DataSource;
         }
     }

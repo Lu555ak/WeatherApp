@@ -4,54 +4,55 @@
              xmlns:page="clr-namespace:WeatherApp.Pages"
              x:Class="WeatherApp.MainPage"
              BackgroundImageSource="https://htmlcolors.com/gradients-images/108-blue.jpg">
-    
-    <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*">
-        <a:BorderlessEntry x:Name="Searchbar"
-                           Grid.Row="0"
-                           HorizontalTextAlignment="Center"
-                           FontAttributes="Bold"
-                           FontSize="22"
-                           TextColor="{StaticResource PrimaryColor}"
-                           Completed="SearchBar_Completed" />
-        <Label x:Name="Date" 
-               Grid.Row="1" 
-               Text="22.2.2022" 
-               HorizontalTextAlignment="Center" 
-               FontSize="10" 
-               TextColor="{StaticResource PrimaryColor}"/>
+    <RefreshView x:Name="RefreshView" Refreshing="App_Refresh" RefreshColor="{StaticResource PrimaryColor}">
+        <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*">
+            <a:BorderlessEntry x:Name="Searchbar"
+                               Grid.Row="0"
+                               HorizontalTextAlignment="Center"
+                               FontAttributes="Bold"
+                               FontSize="22"
+                               TextColor="{StaticResource PrimaryColor}"
+                               Completed="SearchBar_Completed" />
+            <Label x:Name="Date" 
+                   Grid.Row="1" 
+                   Text="22.2.2022" 
+                   HorizontalTextAlignment="Center" 
+                   FontSize="10" 
+                   TextColor="{StaticResource PrimaryColor}"/>
 
-        <page:WeatherNowPage x:Name="WeatherNowPage" Grid.Row="2"/>
-        <page:WeatherDayPage x:Name="WeatherDayPage" Grid.Row="2"/>
-        <page:WeatherWeekPage x:Name="WeatherWeekPage" Grid.Row="2"/>
+            <page:WeatherNowPage x:Name="WeatherNowPage" Grid.Row="2"/>
+            <page:WeatherDayPage x:Name="WeatherDayPage" Grid.Row="2"/>
+            <page:WeatherWeekPage x:Name="WeatherWeekPage" Grid.Row="2"/>
         
-        <Grid Grid.Row="3" 
-              ColumnDefinitions="1*,1*,1*" 
-              RowDefinitions="1*">
-            <a:NavigationButton x:Name="WeatherNowButton"
-                                Grid.Column="0" 
-                                Source="HomePageIcon.png">
-                <a:NavigationButton.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="WeatherNowPageButton_Click"/>
-                </a:NavigationButton.GestureRecognizers>
-            </a:NavigationButton>
+            <Grid Grid.Row="3" 
+                  ColumnDefinitions="1*,1*,1*" 
+                  RowDefinitions="1*">
+                <a:NavigationButton x:Name="WeatherNowButton"
+                                    Grid.Column="0" 
+                                    Source="HomePageIcon.png">
+                    <a:NavigationButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="WeatherNowPageButton_Click"/>
+                    </a:NavigationButton.GestureRecognizers>
+                </a:NavigationButton>
 
-            <a:NavigationButton x:Name="WeatherDayButton"
-                                Grid.Column="1" 
-                                Source="HourMenu.png">
-                <a:NavigationButton.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="WeatherDayPageButton_Click"/>
-                </a:NavigationButton.GestureRecognizers>
-            </a:NavigationButton>
+                <a:NavigationButton x:Name="WeatherDayButton"
+                                    Grid.Column="1" 
+                                    Source="HourMenu.png">
+                    <a:NavigationButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="WeatherDayPageButton_Click"/>
+                    </a:NavigationButton.GestureRecognizers>
+                </a:NavigationButton>
 
-            <a:NavigationButton x:Name="WeatherWeekButton"
-                                Grid.Column="2" 
-                                Source="WeekMenu.png">
-                <a:NavigationButton.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="WeatherWeekPageButton_Click"/>
-                </a:NavigationButton.GestureRecognizers>
-            </a:NavigationButton>
+                <a:NavigationButton x:Name="WeatherWeekButton"
+                                    Grid.Column="2" 
+                                    Source="WeekMenu.png">
+                    <a:NavigationButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="WeatherWeekPageButton_Click"/>
+                    </a:NavigationButton.GestureRecognizers>
+                </a:NavigationButton>
+            </Grid>
         </Grid>
-    </Grid>
+    </RefreshView>
 
     <ContentPage.Resources>
         <Style TargetType="a:NavigationButton">

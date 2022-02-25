@@ -1,7 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+
 using WeatherApp.Pages;
 using WeatherApp.Data;
+
 
 namespace WeatherApp
 {
@@ -12,6 +15,7 @@ namespace WeatherApp
             InitializeComponent();
 
             WeatherNowPageActive();
+            RefreshWeather("sydney");
         }
 
         // Event handlers
@@ -61,20 +65,33 @@ namespace WeatherApp
             OneCallWeatherInfo.Root weatherInfo1C = DeserializeData.ReturnOneCallWeatherInfo(weatherInfo.coord.lat, weatherInfo.coord.lon);
             for(int i=0;i<24;i++)
             {
-                int i1 = i++;
-                WeatherDayPage.DataSource[i].Hour = UnixTimeStampToDateTime(weatherInfo1C.hourly[i].dt).ToString();
+                WeatherDayPage.DataSource[i].Hour = UnixTimeStampToHour(weatherInfo1C.hourly[i].dt).ToString() + ":00";
                 WeatherDayPage.DataSource[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
-                //WeatherDayPage.DataSource[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[i].icon.ToString() + ".png";
+                WeatherDayPage.DataSource[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[0].icon.ToString() + ".png";
             }
+            WeatherDayPage.Refresh();
+
             // Refresh WeatherWeekPage
+            WeatherWeekPage.DataSource[0].Day = "Monday".ToUpper();
+            WeatherWeekPage.DataSource[0].Temperature = "10°C";
+            WeatherWeekPage.DataSource[0].WeatherIcon = "https://openweathermap.org/img/wn/10d.png";
+
+            WeatherWeekPage.Refresh();
         }
 
-        DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        int UnixTimeStampToHour(int unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-            return dtDateTime;
+            return dtDateTime.Hour;
+        }
+
+        async void App_Refresh(object sender, EventArgs args)
+        {
+            RefreshWeather(Searchbar.Text);
+            await Task.Delay(1000);
+            RefreshView.IsRefreshing = false;
         }
     }
 }
