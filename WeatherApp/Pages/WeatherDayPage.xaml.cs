@@ -8,7 +8,13 @@ namespace WeatherApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WeatherDayPage : ContentView
     {
-        public List<WeatherHourWidget> DataSource = new List<WeatherHourWidget>();
+        public WeatherHourWidget this[int i]
+        {
+            get => DataSource[i];
+            set => DataSource[i] = value;
+        }
+
+        private List<WeatherHourWidget> DataSource = new List<WeatherHourWidget>();
         public WeatherDayPage()
         {
             InitializeComponent(); 
