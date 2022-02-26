@@ -13,7 +13,6 @@ namespace WeatherApp
         public MainPage()
         {
             InitializeComponent();
-
             WeatherNowPageActive();
             RefreshWeather("sydney");
         }
@@ -63,7 +62,7 @@ namespace WeatherApp
 
             // Refresh WeatherDayPage
             OneCallWeatherInfo.Root weatherInfo1C = DeserializeData.ReturnOneCallWeatherInfo(weatherInfo.coord.lat, weatherInfo.coord.lon);
-            for(int i=0;i<24;i++)
+            for (int i=0;i<24;i++)
             {
                 WeatherDayPage.DataSource[i].Hour = UnixTimeStampToHour(weatherInfo1C.hourly[i].dt).ToString() + ":00";
                 WeatherDayPage.DataSource[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
@@ -72,10 +71,12 @@ namespace WeatherApp
             WeatherDayPage.Refresh();
 
             // Refresh WeatherWeekPage
-            WeatherWeekPage.DataSource[0].Day = "Monday".ToUpper();
-            WeatherWeekPage.DataSource[0].Temperature = "10°C";
-            WeatherWeekPage.DataSource[0].WeatherIcon = "https://openweathermap.org/img/wn/10d@4x.png";
-
+            for(int i=0;i<7;i++)
+            {
+                WeatherWeekPage.DataSource[i].Day = UnixTimeStampToDay(weatherInfo1C.daily[i].dt).ToString();
+                WeatherWeekPage.DataSource[i].Temperature = Math.Round(weatherInfo1C.daily[i].temp.min).ToString() + "°C/" + Math.Round(weatherInfo1C.daily[i].temp.max).ToString() + "°C";
+                WeatherWeekPage.DataSource[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
+            }
             WeatherWeekPage.Refresh();
         }
 
@@ -85,6 +86,14 @@ namespace WeatherApp
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dtDateTime.Hour;
+        }
+
+        DayOfWeek UnixTimeStampToDay(int unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dtDateTime.DayOfWeek;
         }
 
         async void App_Refresh(object sender, EventArgs args)
