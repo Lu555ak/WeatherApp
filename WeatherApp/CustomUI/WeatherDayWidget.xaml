@@ -15,7 +15,7 @@
                        Grid.ColumnSpan="2"
                        Grid.Row="0"
                        HorizontalOptions="Center"
-                       VerticalTextAlignment="Center"
+                       VerticalTextAlignment="End"
                        TextColor="{StaticResource PrimaryColor}"
                        FontAttributes="Bold"/>
                 <Image x:Name="WeatherImage"

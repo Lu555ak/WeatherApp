@@ -12,6 +12,8 @@ namespace WeatherApp.CustomUI
         public WeatherDayWidget()
         {
             InitializeComponent();
+            TemperatureLabel.FontSize = App.ScreenHeight / (533 / 14);
+            DayLabel.FontSize = App.ScreenHeight / (533 / 12);
         }
 
         public string Day

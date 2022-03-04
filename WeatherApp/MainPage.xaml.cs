@@ -79,12 +79,11 @@ namespace WeatherApp
             // Refresh WeatherWeekPage
             for(int i=0;i<7;i++)
             {
-                WeatherWeekPage[i].Day = UnixTimeStampToDay(weatherInfo1C.daily[i].dt).ToString();
+                WeatherWeekPage[i].Day = UnixTimeStampToDay(weatherInfo1C.daily[i].dt).ToString().ToUpper();
                 WeatherWeekPage[i].Temperature = Math.Round(weatherInfo1C.daily[i].temp.min).ToString() + "°C/" + Math.Round(weatherInfo1C.daily[i].temp.max).ToString() + "°C";
                 WeatherWeekPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
             }
             Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
-
         }
 
         int UnixTimeStampToHour(int unixTimeStamp)
