@@ -5,6 +5,7 @@ using System.Linq;
 
 using WeatherApp.Pages;
 using WeatherApp.Data;
+using System.IO;
 
 
 namespace WeatherApp
@@ -15,7 +16,8 @@ namespace WeatherApp
         {
             InitializeComponent();
             WeatherNowPageActive();
-            RefreshWeather("london");
+            string readFile = File.ReadAllText("LastSavedLocation.txt");
+            RefreshWeather(readFile);
         }
 
         // Event handlers
@@ -84,6 +86,11 @@ namespace WeatherApp
                 WeatherWeekPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
             }
             Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
+
+            using (StreamWriter save = new StreamWriter("LastSavedLocation.txt"))
+            {
+                save.WriteLine(cityName);
+            }
         }
 
         int UnixTimeStampToHour(int unixTimeStamp)
