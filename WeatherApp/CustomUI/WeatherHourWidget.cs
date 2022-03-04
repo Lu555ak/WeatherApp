@@ -2,16 +2,20 @@
 {
     public class WeatherHourWidget
     {
-        public WeatherHourWidget(string hour, string weatherIcon, string temperature)
+        public WeatherHourWidget(string hour, string weatherIcon, string temperature, string realFeel, string rain)
         {
             Hour = hour;
             WeatherIcon = weatherIcon;
             Temperature = temperature;
+            RealFeel = realFeel;
+            Rain = rain;
         }
         public WeatherHourWidget() {}
 
         public string Hour { get; set; }
         public string WeatherIcon { get; set; }
         public string Temperature { get; set; }
+        public string RealFeel { get; set; }
+        public string Rain { get; set; }
     }
 }

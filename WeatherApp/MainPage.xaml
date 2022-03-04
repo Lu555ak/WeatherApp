@@ -3,7 +3,7 @@
              xmlns:a="clr-namespace:WeatherApp.CustomUI"
              xmlns:page="clr-namespace:WeatherApp.Pages"
              x:Class="WeatherApp.MainPage"
-             BackgroundImageSource="https://htmlcolors.com/gradients-images/108-blue.jpg">
+             BackgroundColor="Blue">
     <RefreshView x:Name="RefreshView" Refreshing="App_Refresh" RefreshColor="{StaticResource PrimaryColor}">
         <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*">
             <a:BorderlessEntry x:Name="Searchbar"

@@ -9,7 +9,7 @@
             <BoxView CornerRadius="20"
                      Background="{StaticResource PrimaryGradient}"/>
             <Grid ColumnDefinitions="1*, 1*"
-                  RowDefinitions="1*, 1*">
+                  RowDefinitions="4*, 6*">
                 <Label x:Name="DayLabel"
                        Text="{Binding Day}" 
                        Grid.ColumnSpan="2"
@@ -23,15 +23,15 @@
                        Grid.Column="0"
                        Grid.Row="1"
                        HorizontalOptions="Center"
-                       VerticalOptions="StartAndExpand"
-                       WidthRequest="25"
-                       HeightRequest="25"/>
+                       VerticalOptions="Center"
+                       WidthRequest="50"
+                       HeightRequest="50"/>
                 <Label x:Name="TemperatureLabel"
                        Text="{Binding Temperature}" 
                        Grid.Column="1"
                        Grid.Row="1"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Start"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
                        TextColor="{StaticResource PrimaryColor}"
                        FontAttributes="Bold"/>
             </Grid>
