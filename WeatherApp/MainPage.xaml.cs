@@ -14,7 +14,7 @@ namespace WeatherApp
         {
             InitializeComponent();
             WeatherNowPageActive();
-            RefreshWeather("sydney");
+            RefreshWeather("london");
         }
 
         // Event handlers
@@ -67,8 +67,11 @@ namespace WeatherApp
                 WeatherDayPage[i].Hour = UnixTimeStampToHour(weatherInfo1C.hourly[i].dt).ToString() + ":00";
                 WeatherDayPage[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
                 WeatherDayPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[0].icon.ToString() + "@4x.png";
-                WeatherDayPage[i].RealFeel = "RealFeel: " + Math.Round(weatherInfo1C.hourly[i].feels_like).ToString() + "°C";
-                WeatherDayPage[i].Rain = Math.Round(weatherInfo1C.hourly[i].rain._1h).ToString() + "mm";
+                WeatherDayPage[i].RealFeel = "≈" + Math.Round(weatherInfo1C.hourly[i].feels_like).ToString() + "°C";
+                if(weatherInfo1C.hourly[i].rain == null)
+                    WeatherDayPage[i].Rain = "0mm";
+                else
+                    WeatherDayPage[i].Rain = weatherInfo1C.hourly[i].rain._1h.ToString() + "mm";
             }
             WeatherDayPage.Refresh();
 
