@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using System.Linq;
 
 using WeatherApp.Pages;
 using WeatherApp.Data;
@@ -82,8 +83,7 @@ namespace WeatherApp
                 WeatherWeekPage[i].Temperature = Math.Round(weatherInfo1C.daily[i].temp.min).ToString() + "°C/" + Math.Round(weatherInfo1C.daily[i].temp.max).ToString() + "°C";
                 WeatherWeekPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
             }
-
-            Date.Text = UnixTimeStampDate(weatherInfo.dt).Trim(':','0');
+            Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
 
         }
 

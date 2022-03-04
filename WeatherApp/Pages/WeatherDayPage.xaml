@@ -46,14 +46,16 @@
                                        VerticalTextAlignment="Center"
                                        Margin="0,0,10,0"
                                        TextColor="{StaticResource PrimaryColor}"
-                                       FontAttributes="Bold"/>
+                                       FontAttributes="Bold"
+                                       FontSize="12"/>
                                     <Label Text="{Binding Rain}" 
                                        Grid.Column="4"
                                        HorizontalTextAlignment="End"
                                        VerticalTextAlignment="Center"
                                        Margin="0,0,10,0"
                                        TextColor="{StaticResource PrimaryColor}"
-                                       FontAttributes="Bold"/>
+                                       FontAttributes="Bold"
+                                       FontSize="12"/>
                                 </Grid>
                             </Grid>
                         </ViewCell>

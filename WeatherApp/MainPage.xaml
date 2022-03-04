@@ -17,7 +17,7 @@
                    Grid.Row="1" 
                    Text="22.2.2022" 
                    HorizontalTextAlignment="Center" 
-                   FontSize="10" 
+                   FontSize="12" 
                    TextColor="{StaticResource PrimaryColor}"/>
 
             <page:WeatherNowPage x:Name="WeatherNowPage" Grid.Row="2"/>
