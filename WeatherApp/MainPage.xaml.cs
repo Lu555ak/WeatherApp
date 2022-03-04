@@ -82,6 +82,9 @@ namespace WeatherApp
                 WeatherWeekPage[i].Temperature = Math.Round(weatherInfo1C.daily[i].temp.min).ToString() + "°C/" + Math.Round(weatherInfo1C.daily[i].temp.max).ToString() + "°C";
                 WeatherWeekPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
             }
+
+            Date.Text = UnixTimeStampDate(weatherInfo.dt).Trim(':','0');
+
         }
 
         int UnixTimeStampToHour(int unixTimeStamp)
@@ -98,6 +101,14 @@ namespace WeatherApp
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dtDateTime.DayOfWeek;
+        }
+
+        string UnixTimeStampDate(int unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dtDateTime.Date.ToString();
         }
 
         async void App_Refresh(object sender, EventArgs args)
