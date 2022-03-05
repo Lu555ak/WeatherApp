@@ -5,17 +5,18 @@ using System.Linq;
 
 using WeatherApp.Pages;
 using WeatherApp.Data;
-
+using System.IO;
 
 namespace WeatherApp
 {
     public partial class MainPage : ContentPage
     {
+        string _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "lastlocation.txt");
         public MainPage()
         {
             InitializeComponent();
             WeatherNowPageActive();
-            RefreshWeather("buenos aires");
+            LoadLastLocation();
         }
 
         // Event handlers
@@ -81,6 +82,7 @@ namespace WeatherApp
                 WeatherWeekPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
             }
             Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
+            File.WriteAllText(_fileName, cityName);
         }
         void FavouriteLocation()
         {
@@ -117,6 +119,20 @@ namespace WeatherApp
             RefreshWeather(Searchbar.Text);
             await Task.Delay(1000);
             RefreshView.IsRefreshing = false;
+        }
+
+        void LoadLastLocation()
+        {
+            if (File.Exists(_fileName))
+            {
+                Searchbar.Text = File.ReadAllText(_fileName).ToUpper();
+                RefreshWeather(File.ReadAllText(_fileName));
+            }
+            else
+            {
+                Searchbar.Text = "SAMOBOR";
+                RefreshWeather("Samobor");
+            }
         }
     }
 }
