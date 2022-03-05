@@ -25,13 +25,24 @@
             <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*"
                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
-                <a:BorderlessEntry x:Name="Searchbar"
-                               Grid.Row="0"
-                               HorizontalTextAlignment="Center"
-                               FontAttributes="Bold"
-                               FontSize="22"
-                               TextColor="{StaticResource PrimaryColor}"
-                               Completed="SearchBar_Completed" />
+                <Grid Grid.Row="0" ColumnDefinitions="1*,10*">
+                    <a:BorderlessEntry x:Name="Searchbar"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        HorizontalTextAlignment="Center"
+                                        FontAttributes="Bold"
+                                        FontSize="22"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        Completed="SearchBar_Completed" />
+                    <ImageButton x:Name="FavouriteButton"
+                                 Grid.Column="0"
+                                 Source="FavouriteIcon_Unselected.png"
+                                 BackgroundColor="Transparent"
+                                 Margin="5, 5, 0, 15"
+                                 WidthRequest="20"
+                                 HeightRequest="20"
+                                 Clicked="FavouriteButton_Click"/>
+                </Grid>
                 <Label x:Name="Date" 
                    Grid.Row="1" 
                    Text="22.2.2022" 

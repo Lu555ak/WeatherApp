@@ -23,6 +23,7 @@ namespace WeatherApp
         void WeatherDayPageButton_Click(object sender, EventArgs args) => WeatherDayPageActive();
         void WeatherWeekPageButton_Click(object sender, EventArgs args) => WeatherWeekPageActive();
         void SearchBar_Completed(object sender, EventArgs args) => RefreshWeather(Searchbar.Text);
+        void FavouriteButton_Click(object sender, EventArgs args) => FavouriteLocation();
 
         // Actions
         void WeatherNowPageActive()
@@ -55,7 +56,6 @@ namespace WeatherApp
 
         void RefreshWeather(string cityName)
         {
-            int nullC = 0;
             // Refresh WeatherNowPage
             CurrentWeatherInfo.Root weatherInfo = DeserializeData.ReturnCurrentWeatherInfo(cityName);
             WeatherNowPage.currentTemperature = Math.Round(weatherInfo.main.temp).ToString() + "°C";
@@ -82,7 +82,12 @@ namespace WeatherApp
             }
             Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
         }
+        void FavouriteLocation()
+        {
 
+        }
+
+        // Utility functions
         int UnixTimeStampToHour(int unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
