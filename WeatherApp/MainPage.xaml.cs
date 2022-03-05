@@ -15,7 +15,7 @@ namespace WeatherApp
         {
             InitializeComponent();
             WeatherNowPageActive();
-            RefreshWeather("london");
+            RefreshWeather("buenos aires");
         }
 
         // Event handlers
@@ -55,6 +55,7 @@ namespace WeatherApp
 
         void RefreshWeather(string cityName)
         {
+            int nullC = 0;
             // Refresh WeatherNowPage
             CurrentWeatherInfo.Root weatherInfo = DeserializeData.ReturnCurrentWeatherInfo(cityName);
             WeatherNowPage.currentTemperature = Math.Round(weatherInfo.main.temp).ToString() + "°C";
@@ -69,15 +70,11 @@ namespace WeatherApp
                 WeatherDayPage[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
                 WeatherDayPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[0].icon.ToString() + "@4x.png";
                 WeatherDayPage[i].RealFeel = "≈" + Math.Round(weatherInfo1C.hourly[i].feels_like).ToString() + "°C";
-                if(weatherInfo1C.hourly[i].rain == null)
-                    WeatherDayPage[i].Rain = "0mm";
-                else
-                    WeatherDayPage[i].Rain = weatherInfo1C.hourly[i].rain._1h.ToString() + "mm";
             }
             WeatherDayPage.Refresh();
 
             // Refresh WeatherWeekPage
-            for(int i=0;i<7;i++)
+            for (int i=0;i<7;i++)
             {
                 WeatherWeekPage[i].Day = UnixTimeStampToDay(weatherInfo1C.daily[i].dt).ToString().ToUpper();
                 WeatherWeekPage[i].Temperature = Math.Round(weatherInfo1C.daily[i].temp.min).ToString() + "°C/" + Math.Round(weatherInfo1C.daily[i].temp.max).ToString() + "°C";

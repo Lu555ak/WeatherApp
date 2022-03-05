@@ -7,7 +7,7 @@
     <ContentView.Content>
         <Grid>
             <BoxView CornerRadius="20"
-                     Background="{StaticResource PrimaryGradient}"/>
+                     Background="{DynamicResource PrimaryGradient}"/>
             <Grid ColumnDefinitions="4*, 7*"
                   RowDefinitions="3*, 7*">
                 <Label x:Name="DayLabel"
@@ -24,8 +24,8 @@
                        Grid.Row="1"
                        HorizontalOptions="End"
                        VerticalOptions="StartAndExpand"
-                       WidthRequest="60"
-                       HeightRequest="60"/>
+                       WidthRequest="70"
+                       HeightRequest="70"/>
                 <Label x:Name="TemperatureLabel"
                        Text="{Binding Temperature}" 
                        Grid.Column="1"

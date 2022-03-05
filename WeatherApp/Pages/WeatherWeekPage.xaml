@@ -4,9 +4,9 @@
              xmlns:a="clr-namespace:WeatherApp.CustomUI"
              x:Class="WeatherApp.Pages.WeatherWeekPage">
     <ContentView.Content>
-        <Grid ColumnDefinitions="1*, 10*, 1*">
+        <Grid ColumnDefinitions="1*, 12*, 1*">
             <Grid x:Name="Da" Grid.Column="1"
-                  ColumnDefinitions="5*, 1*, 5*">
+                  ColumnDefinitions="6*, 1*, 6*">
                 <Grid x:Name="Left"
                       Grid.Column="0"
                       RowDefinitions="0*, 3*, 1*, 3*, 1*, 3*, 1*, 3*, 1*">
