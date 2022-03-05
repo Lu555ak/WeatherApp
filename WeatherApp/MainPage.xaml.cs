@@ -5,7 +5,6 @@ using System.Linq;
 
 using WeatherApp.Pages;
 using WeatherApp.Data;
-using System.IO;
 
 
 namespace WeatherApp
@@ -16,8 +15,7 @@ namespace WeatherApp
         {
             InitializeComponent();
             WeatherNowPageActive();
-            string readFile = File.ReadAllText("LastSavedLocation.txt");
-            RefreshWeather(readFile);
+            RefreshWeather("buenos aires");
         }
 
         // Event handlers
@@ -25,6 +23,7 @@ namespace WeatherApp
         void WeatherDayPageButton_Click(object sender, EventArgs args) => WeatherDayPageActive();
         void WeatherWeekPageButton_Click(object sender, EventArgs args) => WeatherWeekPageActive();
         void SearchBar_Completed(object sender, EventArgs args) => RefreshWeather(Searchbar.Text);
+        void FavouriteButton_Click(object sender, EventArgs args) => FavouriteLocation();
 
         // Actions
         void WeatherNowPageActive()
@@ -71,28 +70,24 @@ namespace WeatherApp
                 WeatherDayPage[i].Temperature = Math.Round(weatherInfo1C.hourly[i].temp).ToString() + "°C";
                 WeatherDayPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.hourly[i].weather[0].icon.ToString() + "@4x.png";
                 WeatherDayPage[i].RealFeel = "≈" + Math.Round(weatherInfo1C.hourly[i].feels_like).ToString() + "°C";
-                if(weatherInfo1C.hourly[i].rain == null)
-                    WeatherDayPage[i].Rain = "0mm";
-                else
-                    WeatherDayPage[i].Rain = weatherInfo1C.hourly[i].rain._1h.ToString() + "mm";
             }
             WeatherDayPage.Refresh();
 
             // Refresh WeatherWeekPage
-            for(int i=0;i<7;i++)
+            for (int i=0;i<7;i++)
             {
                 WeatherWeekPage[i].Day = UnixTimeStampToDay(weatherInfo1C.daily[i].dt).ToString().ToUpper();
                 WeatherWeekPage[i].Temperature = Math.Round(weatherInfo1C.daily[i].temp.min).ToString() + "°C/" + Math.Round(weatherInfo1C.daily[i].temp.max).ToString() + "°C";
                 WeatherWeekPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
             }
             Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
+        }
+        void FavouriteLocation()
+        {
 
-            using (StreamWriter save = new StreamWriter("LastSavedLocation.txt"))
-            {
-                save.WriteLine(cityName);
-            }
         }
 
+        // Utility functions
         int UnixTimeStampToHour(int unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
