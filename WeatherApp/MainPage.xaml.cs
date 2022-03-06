@@ -102,10 +102,16 @@ namespace WeatherApp
             Searchbar.Text = Searchbar.Text.ToUpper();
             // Refresh WeatherNowPage
             CurrentWeatherInfo.Root weatherInfo = DeserializeData.ReturnCurrentWeatherInfo(cityName);
+            Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
             WeatherNowPage.currentTemperature = Math.Round(weatherInfo.main.temp).ToString() + "°C";
             WeatherNowPage.currentRealFeel = "RealFeel: " + Math.Round(weatherInfo.main.feels_like).ToString() + "°C";
             WeatherNowPage.currentWeather = weatherInfo.weather[0].main.ToString().ToUpper();
-            WeatherNowPage.Pressure = "DA";
+            WeatherNowPage.Pressure = weatherInfo.main.pressure.ToString() + "hPa";
+            WeatherNowPage.Humidity = weatherInfo.main.humidity.ToString() + "%";
+            WeatherNowPage.MinTemperature = Math.Round(weatherInfo.main.temp_min).ToString() + "°C";
+            WeatherNowPage.MaxTemperature = Math.Round(weatherInfo.main.temp_max).ToString() + "°C";
+            WeatherNowPage.Sunset = UnixTimeStampToHour(weatherInfo.sys.sunset).ToString() + ":" + UnixTimeStampToMin(weatherInfo.sys.sunset).ToString();
+            WeatherNowPage.Sunrise = UnixTimeStampToHour(weatherInfo.sys.sunrise).ToString() + ":" + UnixTimeStampToMin(weatherInfo.sys.sunrise).ToString();
 
             // Refresh WeatherDayPage
             OneCallWeatherInfo.Root weatherInfo1C = DeserializeData.ReturnOneCallWeatherInfo(weatherInfo.coord.lat, weatherInfo.coord.lon);
@@ -125,7 +131,6 @@ namespace WeatherApp
                 WeatherWeekPage[i].Temperature = Math.Round(weatherInfo1C.daily[i].temp.min).ToString() + "°C/" + Math.Round(weatherInfo1C.daily[i].temp.max).ToString() + "°C";
                 WeatherWeekPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
             }
-            Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
 
             // Save to File
             File.WriteAllText(_fileName, cityName);
@@ -207,6 +212,14 @@ namespace WeatherApp
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dtDateTime.Date.ToString();
+        }
+
+        int UnixTimeStampToMin(int unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToLocalTime();
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dtDateTime.Minute;
         }
 
         async void App_Refresh(object sender, EventArgs args)

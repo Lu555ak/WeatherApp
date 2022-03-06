@@ -64,7 +64,7 @@
                       Grid.Row="1"
                       ColumnDefinitions="0.6*,1*">
                     <Image Grid.Column="0" 
-                           Source=""/>
+                           Source="MaxTemperatureIcon.png"/>
                     <Label x:Name="MaxTemperatureLabel" 
                            Grid.Column="1"
                            VerticalTextAlignment="Center"
@@ -75,7 +75,7 @@
                       Grid.Row="1"
                       ColumnDefinitions="1*,0.6*">
                     <Image Grid.Column="1" 
-                           Source=""/>
+                           Source="MinTemperatureIcon.png"/>
                     <Label x:Name="MinTemperatureLabel" 
                            Grid.Column="0"
                            VerticalTextAlignment="Center"
