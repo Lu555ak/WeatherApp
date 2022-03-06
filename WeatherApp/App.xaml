@@ -6,7 +6,8 @@
     <Application.Resources>
         <LinearGradientBrush x:Name="PrimaryGradient" x:Key="PrimaryGradient" EndPoint="1,0.6" StartPoint="-1,-0.9">
             <GradientStop Color="#3b3b3b" Offset="0"/>
-            <GradientStop Color="#3b3b3b " Offset="1"/>
+            <GradientStop Color="#5f5f5f" Offset="0.5"/>
+            <GradientStop Color="#858585 " Offset="1"/>
         </LinearGradientBrush>
 
         <LinearGradientBrush x:Name="NormalThemeGradient" x:Key="a" EndPoint="1,0.6" StartPoint="-1,-0.9">

@@ -24,7 +24,7 @@
                    IsAnimationPlaying="True"/>
 
 
-            <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*"
+            <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.9*"
                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
                 <Grid Grid.Row="0" ColumnDefinitions="1*,9*,1*">
@@ -94,6 +94,15 @@
                         </a:NavigationButton.GestureRecognizers>
                     </a:NavigationButton>
                 </Grid>
+
+                <Label
+                   Margin="0,0,10,0"
+                   Grid.Row="4" 
+                   Text="©YoYu" 
+                   HorizontalOptions="End" 
+                   VerticalOptions="Start" 
+                   FontSize="7"
+                   TextColor="{DynamicResource PrimaryColor}"/>
             </Grid>
 
             <a:FavouritePopup x:Name="FavouritesPopup"/>
