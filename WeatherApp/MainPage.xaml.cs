@@ -6,16 +6,21 @@ using System.Linq;
 using WeatherApp.Pages;
 using WeatherApp.Data;
 using System.IO;
+using System.Collections.Generic;
 
 namespace WeatherApp
 {
     public partial class MainPage : ContentPage
     {
+        int favouriteIndex = 0;
+        List<string> favouriteLocations = new List<string>();
         string _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "lastlocation.txt");
+        string _fileFavourteLocations= Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "favouritelocations.txt");
         public MainPage()
         {
             InitializeComponent();
             WeatherNowPageActive();
+            LoadFavourites();
             LoadLastLocation();
         }
 
@@ -58,6 +63,7 @@ namespace WeatherApp
 
         void RefreshWeather(string cityName)
         {
+            Searchbar.Text = Searchbar.Text.ToUpper();
             // Refresh WeatherNowPage
             CurrentWeatherInfo.Root weatherInfo = DeserializeData.ReturnCurrentWeatherInfo(cityName);
             WeatherNowPage.currentTemperature = Math.Round(weatherInfo.main.temp).ToString() + "°C";
@@ -84,10 +90,46 @@ namespace WeatherApp
             }
             Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
             File.WriteAllText(_fileName, cityName);
+            FavouriteButton.Source = "FavouriteIcon_Unselected.png";
+            for (int i = 0; i < favouriteIndex; i++)
+            {
+                if (favouriteLocations[i] == Searchbar.Text)
+                {
+                    FavouriteButton.Source = "FavouriteIcon_Selected.png";
+                }
+            }
         }
         void FavouriteLocation()
         {
-
+            if (FavouriteButton.Source.ToString() == "File: FavouriteIcon_Unselected.png")
+            {
+                File.Create(_fileFavourteLocations).Close();
+                FavouriteButton.Source = "FavouriteIcon_Selected.png";
+                favouriteLocations.Add(Searchbar.Text);
+                TextWriter tw = new StreamWriter(_fileFavourteLocations);
+                foreach (String s in favouriteLocations)
+                    tw.WriteLine(s);
+                tw.Close();
+                favouriteIndex++;
+            }
+            else
+            {
+                FavouriteButton.Source = "FavouriteIcon_Unselected.png";
+                File.Create(_fileFavourteLocations).Close();
+                for (int i=0; i<favouriteIndex; i++)
+                {
+                    if (favouriteLocations[i] == Searchbar.Text)
+                    {
+                        favouriteLocations.Remove(Searchbar.Text);
+                        favouriteIndex--;
+                    }
+                    TextWriter tw = new StreamWriter(_fileFavourteLocations);
+                    foreach (String s in favouriteLocations)
+                        tw.WriteLine(s);
+                    tw.Close();
+                }
+                
+            }
         }
 
         void FavouriteLocationMenu()
@@ -131,13 +173,23 @@ namespace WeatherApp
         {
             if (File.Exists(_fileName))
             {
-                Searchbar.Text = File.ReadAllText(_fileName).ToUpper();
+                Searchbar.Text = File.ReadAllText(_fileName);
                 RefreshWeather(File.ReadAllText(_fileName));
             }
             else
             {
                 Searchbar.Text = "SAMOBOR";
                 RefreshWeather("Samobor");
+            }
+        }
+
+        void LoadFavourites()
+        {
+            if (File.Exists(_fileFavourteLocations))
+            {
+                favouriteLocations = File.ReadAllLines(_fileFavourteLocations).ToList();
+                foreach (string s in favouriteLocations)
+                    favouriteIndex++;
             }
         }
     }
