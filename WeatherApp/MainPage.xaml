@@ -94,7 +94,7 @@
             </Grid>
 
             <a:FavouritePopup x:Name="FavouritesPopup"/>
-            
+
         </RelativeLayout>
     </RefreshView>
 

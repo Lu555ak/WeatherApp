@@ -8,6 +8,9 @@ namespace WeatherApp
     {
         public static int ScreenHeight { get; set; }
         public static int ScreenWidth { get; set; }
+
+        public static int ScreenHeightPixels { get; set; }
+        public static int ScreenWidthPixels { get; set; }
         public App()
         {
             InitializeComponent();

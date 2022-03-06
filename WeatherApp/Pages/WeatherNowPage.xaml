@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Pages.WeatherNowPage">
     <ContentView.Content>
-        <Grid ColumnDefinitions="1*" RowDefinitions="5*,1*,2*,5*,6*">
+        <Grid ColumnDefinitions="1*" RowDefinitions="5*,1*,1*,3*,0.5*,7*,0.5*">
             <Label x:Name="CurrentTemperature" 
                    Grid.Row="0" 
                    Text="14°C" 
                    HorizontalOptions="Center" 
-                   VerticalOptions="End" 
+                   VerticalOptions="Center" 
                    FontSize="80"
                    TextColor="{StaticResource PrimaryColor}"/>
             <Label x:Name="CurrentRealFeel" 
@@ -29,10 +29,84 @@
                    Grid.Row="3"
                    Text="SUNNY"
                    HorizontalOptions="Center" 
-                   VerticalOptions="Start" 
+                   VerticalTextAlignment="Start" 
                    FontSize="40"
                    FontAttributes="Bold"
                    TextColor="{StaticResource PrimaryColor}"/>
+            <Grid Grid.Row="5" 
+                  ColumnDefinitions="1*,2*,0*,2*,1*" 
+                  RowDefinitions="1*,1*,1*">
+
+                <Grid Grid.Column="1"
+                      Grid.Row="0" 
+                      ColumnDefinitions="0.6*,1*">
+                    <Image Grid.Column="0" 
+                           Source="SunriseIcon.png"/>
+                    <Label x:Name="SunriseLabel" 
+                           Grid.Column="1"
+                           VerticalTextAlignment="Center"
+                           TextColor="{DynamicResource PrimaryColor}"/>
+                </Grid>
+
+                <Grid Grid.Column="3"
+                      Grid.Row="0"
+                      ColumnDefinitions="1*,0.6*">
+                    <Image Grid.Column="1" 
+                           Source="SunsetIcon.png"/>
+                    <Label x:Name="SunsetLabel" 
+                           Grid.Column="0"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="End"
+                           TextColor="{DynamicResource PrimaryColor}"/>
+                </Grid>
+
+                <Grid Grid.Column="1"
+                      Grid.Row="1"
+                      ColumnDefinitions="0.6*,1*">
+                    <Image Grid.Column="0" 
+                           Source=""/>
+                    <Label x:Name="MaxTemperatureLabel" 
+                           Grid.Column="1"
+                           VerticalTextAlignment="Center"
+                           TextColor="{DynamicResource PrimaryColor}"/>
+                </Grid>
+
+                <Grid Grid.Column="3"
+                      Grid.Row="1"
+                      ColumnDefinitions="1*,0.6*">
+                    <Image Grid.Column="1" 
+                           Source=""/>
+                    <Label x:Name="MinTemperatureLabel" 
+                           Grid.Column="0"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="End"
+                           TextColor="{DynamicResource PrimaryColor}"/>
+                </Grid>
+
+                <Grid Grid.Column="1"
+                      Grid.Row="2"
+                      ColumnDefinitions="0.6*,1*">
+                    <Image Grid.Column="0" 
+                           Source="HumidityIcon.png"/>
+                    <Label x:Name="HumidityLabel" 
+                           Grid.Column="1"
+                           VerticalTextAlignment="Center"
+                           TextColor="{DynamicResource PrimaryColor}"/>
+                </Grid>
+
+                <Grid Grid.Column="3"
+                      Grid.Row="2"
+                      ColumnDefinitions="1*,0.6*">
+                    <Image Grid.Column="1" 
+                           Source="PressureIcon.png"/>
+                    <Label x:Name="PressureLabel" 
+                           Grid.Column="0"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="End"
+                           TextColor="{DynamicResource PrimaryColor}"/>
+                </Grid>
+
+            </Grid>
         </Grid>
     </ContentView.Content>
 </ContentView>

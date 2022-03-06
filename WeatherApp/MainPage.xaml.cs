@@ -22,7 +22,9 @@ namespace WeatherApp
             WeatherNowPageActive();
             LoadFavourites();
             LoadLastLocation();
+            FavouritesButton_Subscribe();
         }
+
 
         // Event handlers
         void WeatherNowPageButton_Click(object sender, EventArgs args) => WeatherNowPageActive();
@@ -31,6 +33,40 @@ namespace WeatherApp
         void SearchBar_Completed(object sender, EventArgs args) => RefreshWeather(Searchbar.Text);
         void FavouriteButton_Click(object sender, EventArgs args) => FavouriteLocation();
         void MenuButton_Click(object sender, EventArgs args) => FavouriteLocationMenu();
+        
+        void FavouritesButton_Subscribe()
+        {
+            FavouritesPopup[0].Clicked += delegate (object sender, EventArgs e)
+            {
+                if(FavouritesPopup[0].Text != "<EMPTY>")
+                {
+                    RefreshWeather(FavouritesPopup[0].Text);
+                    Searchbar.Text = FavouritesPopup[0].Text;
+                    FavouriteButton.Source = "FavouriteIcon_Selected.png";
+                    FavouritesPopup.IsVisible = false;
+                }      
+            };
+            FavouritesPopup[1].Clicked += delegate (object sender, EventArgs e)
+            {
+                if (FavouritesPopup[1].Text != "<EMPTY>")
+                {
+                    RefreshWeather(FavouritesPopup[1].Text);
+                    Searchbar.Text = FavouritesPopup[1].Text;
+                    FavouriteButton.Source = "FavouriteIcon_Selected.png";
+                    FavouritesPopup.IsVisible = false;
+                }
+            };
+            FavouritesPopup[2].Clicked += delegate (object sender, EventArgs e)
+            {
+                if (FavouritesPopup[2].Text != "<EMPTY>")
+                {
+                    RefreshWeather(FavouritesPopup[2].Text);
+                    Searchbar.Text = FavouritesPopup[2].Text;
+                    FavouriteButton.Source = "FavouriteIcon_Selected.png";
+                    FavouritesPopup.IsVisible = false;
+                }
+            };
+        }
 
         // Actions
         void WeatherNowPageActive()
@@ -69,6 +105,7 @@ namespace WeatherApp
             WeatherNowPage.currentTemperature = Math.Round(weatherInfo.main.temp).ToString() + "°C";
             WeatherNowPage.currentRealFeel = "RealFeel: " + Math.Round(weatherInfo.main.feels_like).ToString() + "°C";
             WeatherNowPage.currentWeather = weatherInfo.weather[0].main.ToString().ToUpper();
+            WeatherNowPage.Pressure = "DA";
 
             // Refresh WeatherDayPage
             OneCallWeatherInfo.Root weatherInfo1C = DeserializeData.ReturnOneCallWeatherInfo(weatherInfo.coord.lat, weatherInfo.coord.lon);
@@ -89,6 +126,8 @@ namespace WeatherApp
                 WeatherWeekPage[i].WeatherIcon = "https://openweathermap.org/img/wn/" + weatherInfo1C.daily[i].weather[0].icon.ToString() + "@4x.png";
             }
             Date.Text = UnixTimeStampDate(weatherInfo.dt).ToString().Split(' ').First();
+
+            // Save to File
             File.WriteAllText(_fileName, cityName);
             FavouriteButton.Source = "FavouriteIcon_Unselected.png";
             for (int i = 0; i < favouriteIndex; i++)
@@ -97,43 +136,48 @@ namespace WeatherApp
                 {
                     FavouriteButton.Source = "FavouriteIcon_Selected.png";
                 }
-            }
+            } 
         }
         void FavouriteLocation()
         {
-            if (FavouriteButton.Source.ToString() == "File: FavouriteIcon_Unselected.png")
+            if(Searchbar.Text != "<EMPTY>")
             {
-                File.Create(_fileFavourteLocations).Close();
-                FavouriteButton.Source = "FavouriteIcon_Selected.png";
-                favouriteLocations.Add(Searchbar.Text);
-                TextWriter tw = new StreamWriter(_fileFavourteLocations);
-                foreach (String s in favouriteLocations)
-                    tw.WriteLine(s);
-                tw.Close();
-                favouriteIndex++;
-            }
-            else
-            {
-                FavouriteButton.Source = "FavouriteIcon_Unselected.png";
-                File.Create(_fileFavourteLocations).Close();
-                for (int i=0; i<favouriteIndex; i++)
+                if (FavouriteButton.Source.ToString() == "File: FavouriteIcon_Unselected.png")
                 {
-                    if (favouriteLocations[i] == Searchbar.Text)
-                    {
-                        favouriteLocations.Remove(Searchbar.Text);
-                        favouriteIndex--;
-                    }
+                    File.Create(_fileFavourteLocations).Close();
+                    FavouriteButton.Source = "FavouriteIcon_Selected.png";
+                    favouriteLocations.Add(Searchbar.Text);
                     TextWriter tw = new StreamWriter(_fileFavourteLocations);
                     foreach (String s in favouriteLocations)
                         tw.WriteLine(s);
                     tw.Close();
+                    favouriteIndex++;
                 }
-            }
+                else
+                {
+                    FavouriteButton.Source = "FavouriteIcon_Unselected.png";
+                    File.Create(_fileFavourteLocations).Close();
+                    for (int i = 0; i < favouriteIndex; i++)
+                    {
+                        if (favouriteLocations[i] == Searchbar.Text)
+                        {
+                            favouriteLocations.Remove(Searchbar.Text);
+                            favouriteIndex--;
+                        }
+                        TextWriter tw = new StreamWriter(_fileFavourteLocations);
+                        foreach (String s in favouriteLocations)
+                            tw.WriteLine(s);
+                        tw.Close();
+                    }
+                }
+                LoadFavouritesToMenu();
+            }        
         }
 
         void FavouriteLocationMenu()
         {
             FavouritesPopup.IsVisible = !FavouritesPopup.IsVisible;
+            FavouritesPopup.Margin = new Thickness(App.ScreenWidth/3.33333333333333, 0, 0, 0);
         }
 
         // Utility functions
@@ -190,6 +234,29 @@ namespace WeatherApp
                 foreach (string s in favouriteLocations)
                     favouriteIndex++;
             }
+            LoadFavouritesToMenu();
+        }
+
+        void LoadFavouritesToMenu()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                try
+                {
+                    FavouritesPopup[i].Text = favouriteLocations[i];
+                }
+                catch
+                {
+                    FavouritesPopup[i].Text = "<EMPTY>";
+                }
+            }
+            if (favouriteIndex > 3)
+            {
+                FavouritesPopup.MoreText = "+" + (favouriteIndex - 3).ToString() + " more";
+                FavouritesPopup.Visibility = true;
+            }           
+            else
+                FavouritesPopup.Visibility = false;
         }
     }
 }

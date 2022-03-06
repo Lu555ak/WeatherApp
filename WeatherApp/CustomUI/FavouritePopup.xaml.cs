@@ -12,6 +12,18 @@ namespace WeatherApp.CustomUI
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FavouritePopup : Frame
     {
+        public string MoreText
+        {
+            get => moreLabel.Text;
+            set => moreLabel.Text = value;
+        }
+
+        public bool Visibility
+        {
+            get => moreLabel.IsVisible;
+            set => moreLabel.IsVisible = value;
+        }
+
         public Button this[int i]
         {
             get
@@ -40,5 +52,6 @@ namespace WeatherApp.CustomUI
         {
             InitializeComponent();
         }
+ 
     }
 }

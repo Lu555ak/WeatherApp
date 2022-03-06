@@ -17,6 +17,9 @@ namespace WeatherApp.Droid
             App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
             App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
 
+            App.ScreenHeightPixels = (int)(Resources.DisplayMetrics.HeightPixels);
+            App.ScreenWidthPixels = (int)(Resources.DisplayMetrics.WidthPixels);
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
