@@ -4,7 +4,7 @@
              x:Class="WeatherApp.CustomUI.NavigationButton">
     <ContentView.Content>
         <Grid ColumnDefinitions="50" RowDefinitions="auto">
-            <Button x:Name="BackgroundButton" Background="{Binding BackgroundB}" BorderColor="{DynamicResource PrimaryColor}" BorderWidth="{Binding BorderWidth}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="{Binding CornerRadius}" />
+            <Button x:Name="BackgroundButton" Background="{DynamicResource PrimaryGradient}" BorderColor="{DynamicResource PrimaryColor}" BorderWidth="{Binding BorderWidth}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="{Binding CornerRadius}" />
             <Image x:Name="Image" Source="{Binding Source}" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent"/>
         </Grid>
     </ContentView.Content>

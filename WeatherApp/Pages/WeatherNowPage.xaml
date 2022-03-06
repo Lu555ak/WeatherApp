@@ -39,7 +39,7 @@
 
                 <Grid Grid.Column="1"
                       Grid.Row="0" 
-                      ColumnDefinitions="0.6*,1*">
+                      ColumnDefinitions="0.5*,1*">
                     <Image Grid.Column="0" 
                            Source="SunriseIcon.png"/>
                     <Label x:Name="SunriseLabel" 
@@ -50,7 +50,7 @@
 
                 <Grid Grid.Column="3"
                       Grid.Row="0"
-                      ColumnDefinitions="1*,0.6*">
+                      ColumnDefinitions="1*,0.5*">
                     <Image Grid.Column="1" 
                            Source="SunsetIcon.png"/>
                     <Label x:Name="SunsetLabel" 
@@ -62,7 +62,7 @@
 
                 <Grid Grid.Column="1"
                       Grid.Row="1"
-                      ColumnDefinitions="0.6*,1*">
+                      ColumnDefinitions="0.5*,1*">
                     <Image Grid.Column="0" 
                            Source="MaxTemperatureIcon.png"/>
                     <Label x:Name="MaxTemperatureLabel" 
@@ -73,7 +73,7 @@
 
                 <Grid Grid.Column="3"
                       Grid.Row="1"
-                      ColumnDefinitions="1*,0.6*">
+                      ColumnDefinitions="1*,0.5*">
                     <Image Grid.Column="1" 
                            Source="MinTemperatureIcon.png"/>
                     <Label x:Name="MinTemperatureLabel" 
@@ -85,7 +85,7 @@
 
                 <Grid Grid.Column="1"
                       Grid.Row="2"
-                      ColumnDefinitions="0.6*,1*">
+                      ColumnDefinitions="0.5*,1*">
                     <Image Grid.Column="0" 
                            Source="HumidityIcon.png"/>
                     <Label x:Name="HumidityLabel" 
@@ -96,7 +96,7 @@
 
                 <Grid Grid.Column="3"
                       Grid.Row="2"
-                      ColumnDefinitions="1*,0.6*">
+                      ColumnDefinitions="1*,0.5*">
                     <Image Grid.Column="1" 
                            Source="PressureIcon.png"/>
                     <Label x:Name="PressureLabel" 

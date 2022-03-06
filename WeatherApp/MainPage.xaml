@@ -69,7 +69,8 @@
                   RowDefinitions="1*">
                     <a:NavigationButton x:Name="WeatherNowButton"
                                     Grid.Column="0" 
-                                    Source="HomePageIcon.png">
+                                    Source="HomePageIcon.png"
+                                    >
                         <a:NavigationButton.GestureRecognizers>
                             <TapGestureRecognizer Tapped="WeatherNowPageButton_Click"/>
                         </a:NavigationButton.GestureRecognizers>
@@ -77,7 +78,8 @@
 
                     <a:NavigationButton x:Name="WeatherDayButton"
                                     Grid.Column="1" 
-                                    Source="HourMenu.png">
+                                    Source="HourMenu.png"
+                                   >
                         <a:NavigationButton.GestureRecognizers>
                             <TapGestureRecognizer Tapped="WeatherDayPageButton_Click"/>
                         </a:NavigationButton.GestureRecognizers>
@@ -85,7 +87,8 @@
 
                     <a:NavigationButton x:Name="WeatherWeekButton"
                                     Grid.Column="2" 
-                                    Source="WeekMenu.png">
+                                    Source="WeekMenu.png"
+                                   >
                         <a:NavigationButton.GestureRecognizers>
                             <TapGestureRecognizer Tapped="WeatherWeekPageButton_Click"/>
                         </a:NavigationButton.GestureRecognizers>

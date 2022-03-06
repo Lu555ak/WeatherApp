@@ -29,5 +29,15 @@ namespace WeatherApp
         protected override void OnResume()
         {
         }
+
+        public void SetNormalTheme()
+        {
+            PrimaryGradient = NormalThemeGradient;
+        }
+
+        public void SetColdTheme()
+        {
+            PrimaryGradient = ColdThemeGradient;
+        }
     }
 }

@@ -4,12 +4,12 @@
        x:Class="WeatherApp.CustomUI.FavouritePopup"
        HasShadow="True"
        IsVisible="False"
-       BackgroundColor="{DynamicResource PrimaryColor}"
+       Background="{DynamicResource PrimaryGradient}"
        AbsoluteLayout.LayoutFlags="All"
        AbsoluteLayout.LayoutBounds="1,1,0.5,0.5"
        CornerRadius="15">
     <StackLayout x:Name="OptionsStack">
-        <Label Text="FAVOURITES" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+        <Label Text="FAVOURITES" HorizontalTextAlignment="Center" FontSize="20" TextColor="{DynamicResource PrimaryColor}" FontAttributes="Bold"/>
         <Button x:Name="F1" Text="&lt;EMPTY>"/>
         <Button x:Name="F2" Text="&lt;EMPTY>"/>
         <Button x:Name="F3" Text="&lt;EMPTY>"/>

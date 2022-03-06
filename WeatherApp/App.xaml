@@ -4,13 +4,23 @@
              x:Class="WeatherApp.App">
 
     <Application.Resources>
-        <LinearGradientBrush x:Key="PrimaryGradient" EndPoint="1,0.6" StartPoint="-1,-0.9">
-            <GradientStop Color="#36096d" Offset="0.2"/>
-            <GradientStop Color="#009ffd " Offset="0.74"/>
-            <GradientStop Color="#37d5d6 " Offset="1"/>
+        <LinearGradientBrush x:Name="PrimaryGradient" x:Key="PrimaryGradient" EndPoint="1,0.6" StartPoint="-1,-0.9">
+            <GradientStop Color="#3b3b3b" Offset="0"/>
+            <GradientStop Color="#3b3b3b " Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Name="NormalThemeGradient" x:Key="a" EndPoint="1,0.6" StartPoint="-1,-0.9">
+            <GradientStop Color="#793E69 " Offset="0.2"/>
+            <GradientStop Color="#65164E  " Offset="0.74"/>
+            <GradientStop Color="#3B042B  " Offset="1"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Name="ColdThemeGradient" x:Key="b" EndPoint="1,0.6" StartPoint="-1,-0.9">
+            <GradientStop Color="#021792" Offset="0.2"/>
+            <GradientStop Color="#0C0843 " Offset="0.74"/>
+            <GradientStop Color="#00003D  " Offset="1"/>
         </LinearGradientBrush>
 
         <Color x:Key="PrimaryColor">whitesmoke</Color>
     </Application.Resources>
-    
 </Application>

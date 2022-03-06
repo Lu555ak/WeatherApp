@@ -141,10 +141,42 @@ namespace WeatherApp
                 {
                     FavouriteButton.Source = "FavouriteIcon_Selected.png";
                 }
-            } 
+            }
 
+            // Change Theme
+            int currentUNIXtime = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+            string terrainSource = "";
 
-      
+            if (weatherInfo.main.temp > 0)
+            {
+                terrainSource += "ImageWeatherNormal";
+                ((App)Application.Current).SetNormalTheme();
+            }         
+            else
+            {
+                terrainSource += "ImageWeatherCold";
+                ((App)Application.Current).SetColdTheme();
+            }
+
+            if(currentUNIXtime > weatherInfo.sys.sunrise && currentUNIXtime < weatherInfo.sys.sunset)
+            {
+                terrainSource += "_Day.png";
+                BackgroundImage_SunMoon.Source = "ImageWeather_Sun";
+            }
+            else
+            {
+                terrainSource += "_Night.png";
+                BackgroundImage_SunMoon.Source = "ImageWeather_Moon";
+            }
+            BackgroundImage_Terrain.Source = terrainSource;
+
+            if (weatherInfo.weather[0].main.ToString().ToUpper() == "RAIN" || weatherInfo.weather[0].main.ToString().ToUpper() == "SHOWER RAIN" || weatherInfo.weather[0].main.ToString().ToUpper() == "THUNDERSTORM")
+                BackgroundImage_Weather.Source = "rainFall.gif";
+            else if(weatherInfo.weather[0].main.ToString().ToUpper() == "SNOW")
+                BackgroundImage_Weather.Source = "snowFall.gif";
+            else
+                BackgroundImage_Weather.Source = "";
+
 
         }
         void FavouriteLocation()
