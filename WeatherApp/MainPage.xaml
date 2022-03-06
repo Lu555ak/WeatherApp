@@ -6,16 +6,16 @@
              BackgroundColor="Blue">
     <RefreshView x:Name="RefreshView" Refreshing="App_Refresh" RefreshColor="{StaticResource PrimaryColor}">
         <RelativeLayout>
-            <Image x:Name="BackgroundImage_Background"
-                   Source="BGR1.png"
-                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
-                   Aspect="AspectFill"/>
             <Image x:Name="BackgroundImage_Terrain"
-                   Source="Terrain1.png"
+                   Source="ImageWeatherNormal_Night.png"
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="Fill"/>
+            <Image x:Name="BackgroundImage_SunMoon"
+                   Source="ImageWeather_Moon.png"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                   Aspect="AspectFill"/>
             <Image x:Name="BackgroundImage_Weather"
                    Source=""
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"

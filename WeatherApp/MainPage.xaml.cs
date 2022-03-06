@@ -137,6 +137,10 @@ namespace WeatherApp
                     FavouriteButton.Source = "FavouriteIcon_Selected.png";
                 }
             } 
+
+
+      
+
         }
         void FavouriteLocation()
         {
