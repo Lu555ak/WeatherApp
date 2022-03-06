@@ -7,7 +7,7 @@
     <RefreshView x:Name="RefreshView" Refreshing="App_Refresh" RefreshColor="{StaticResource PrimaryColor}">
         <RelativeLayout>
             <Image x:Name="BackgroundImage_Background"
-                   Source="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg"
+                   Source=""
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="AspectFill"/>
@@ -17,10 +17,11 @@
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="AspectFill"/>
             <Image x:Name="BackgroundImage_Weather"
-                   Source=""
+                   Source="rainFall.gif"
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
-                   Aspect="AspectFill"/>
+                   Aspect="AspectFill"
+                   IsAnimationPlaying="True"/>
             
             <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*"
                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
@@ -41,7 +42,8 @@
                                  Margin="5, 5, 0, 15"
                                  WidthRequest="20"
                                  HeightRequest="20"
-                                 Clicked="FavouriteButton_Click"/>
+                                 Clicked="FavouriteButton_Click"
+                                 />
                 </Grid>
                 <Label x:Name="Date" 
                    Grid.Row="1" 
