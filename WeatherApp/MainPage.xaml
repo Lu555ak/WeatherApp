@@ -29,7 +29,7 @@
                 <Grid Grid.Row="0" ColumnDefinitions="1*,9*,1*">
                     <a:BorderlessEntry x:Name="Searchbar"
                                         Grid.Column="0"
-                                        Grid.ColumnSpan="2"
+                                        Grid.ColumnSpan="3"
                                         HorizontalTextAlignment="Center"
                                         FontAttributes="Bold"
                                         FontSize="22"
@@ -47,10 +47,10 @@
                                  Grid.Column="2"
                                  Source="MenuIcon.png"
                                  BackgroundColor="Transparent"
-                                 Margin="5, 5, 0, 15"
+                                 Margin="0, 5, 5, 15"
                                  WidthRequest="20"
                                  HeightRequest="20"
-                                 />
+                                 Clicked="MenuButton_Click" />
                 </Grid>
                 <Label x:Name="Date" 
                    Grid.Row="1" 
