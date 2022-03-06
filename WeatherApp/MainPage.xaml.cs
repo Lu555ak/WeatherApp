@@ -128,13 +128,12 @@ namespace WeatherApp
                         tw.WriteLine(s);
                     tw.Close();
                 }
-                
             }
         }
 
         void FavouriteLocationMenu()
         {
-
+            
         }
 
         // Utility functions
