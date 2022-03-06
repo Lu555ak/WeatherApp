@@ -25,6 +25,7 @@ namespace WeatherApp
         void WeatherWeekPageButton_Click(object sender, EventArgs args) => WeatherWeekPageActive();
         void SearchBar_Completed(object sender, EventArgs args) => RefreshWeather(Searchbar.Text);
         void FavouriteButton_Click(object sender, EventArgs args) => FavouriteLocation();
+        void MenuButton_Click(object sender, EventArgs args) => FavouriteLocationMenu();
 
         // Actions
         void WeatherNowPageActive()
@@ -85,6 +86,11 @@ namespace WeatherApp
             File.WriteAllText(_fileName, cityName);
         }
         void FavouriteLocation()
+        {
+
+        }
+
+        void FavouriteLocationMenu()
         {
 
         }

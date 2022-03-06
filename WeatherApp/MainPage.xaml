@@ -26,7 +26,7 @@
             <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*"
                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
-                <Grid Grid.Row="0" ColumnDefinitions="1*,10*">
+                <Grid Grid.Row="0" ColumnDefinitions="1*,9*,1*">
                     <a:BorderlessEntry x:Name="Searchbar"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
@@ -42,7 +42,14 @@
                                  Margin="5, 5, 0, 15"
                                  WidthRequest="20"
                                  HeightRequest="20"
-                                 Clicked="FavouriteButton_Click"
+                                 Clicked="FavouriteButton_Click"/>
+                    <ImageButton x:Name="MenuButton"
+                                 Grid.Column="2"
+                                 Source="MenuIcon.png"
+                                 BackgroundColor="Transparent"
+                                 Margin="5, 5, 0, 15"
+                                 WidthRequest="20"
+                                 HeightRequest="20"
                                  />
                 </Grid>
                 <Label x:Name="Date" 
