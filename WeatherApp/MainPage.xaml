@@ -7,15 +7,15 @@
     <RefreshView x:Name="RefreshView" Refreshing="App_Refresh" RefreshColor="{StaticResource PrimaryColor}">
         <RelativeLayout>
             <Image x:Name="BackgroundImage_Background"
-                   Source=""
+                   Source="BGR1.png"
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="AspectFill"/>
             <Image x:Name="BackgroundImage_Terrain"
-                   Source=""
+                   Source="Terrain1.png"
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
-                   Aspect="AspectFill"/>
+                   Aspect="Fill"/>
             <Image x:Name="BackgroundImage_Weather"
                    Source="rainFall.gif"
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"

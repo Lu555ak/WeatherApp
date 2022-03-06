@@ -10,10 +10,18 @@ namespace WeatherApp.Data
         private static T DownloadSeralizedData<T>(string cityName)
         {
             string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + appid);
+            string defaulturl = string.Format("https://api.openweathermap.org/data/2.5/weather?q=Samobor&units=metric&appid=" + appid);
             using (WebClient wc = new WebClient())
             {
                 var json = string.Empty;
-                json = wc.DownloadString(url);
+                try
+                {
+                    json = wc.DownloadString(url);
+                }      
+                catch
+                {
+                    json = wc.DownloadString(defaulturl);
+                }
                 return JsonConvert.DeserializeObject<T>(json);
             }
         }
