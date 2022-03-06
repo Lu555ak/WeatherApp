@@ -133,7 +133,7 @@ namespace WeatherApp
 
         void FavouriteLocationMenu()
         {
-            
+            FavouritesPopup.IsVisible = !FavouritesPopup.IsVisible;
         }
 
         // Utility functions

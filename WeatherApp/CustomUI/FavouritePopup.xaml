@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="WeatherApp.CustomUI.FavouritePopup"
+       HasShadow="True"
+       IsVisible="False"
+       BackgroundColor="{DynamicResource PrimaryColor}"
+       AbsoluteLayout.LayoutFlags="All"
+       AbsoluteLayout.LayoutBounds="1,1,0.5,0.5"
+       CornerRadius="15">
+    <StackLayout x:Name="OptionsStack">
+        <Button x:Name="F1" Text="&lt;EMPTY>"/>
+        <Button x:Name="F2" Text="&lt;EMPTY>"/>
+        <Button x:Name="F3" Text="&lt;EMPTY>"/>
+    </StackLayout>
+</Frame>

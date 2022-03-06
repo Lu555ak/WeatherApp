@@ -17,12 +17,13 @@
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="Fill"/>
             <Image x:Name="BackgroundImage_Weather"
-                   Source="rainFall.gif"
+                   Source=""
                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                    Aspect="AspectFill"
                    IsAnimationPlaying="True"/>
-            
+
+
             <Grid ColumnDefinitions="1*" RowDefinitions="2.5*, 1*, 21*, 3*, 0.1*"
                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
@@ -91,6 +92,9 @@
                     </a:NavigationButton>
                 </Grid>
             </Grid>
+
+            <a:FavouritePopup x:Name="FavouritesPopup"/>
+            
         </RelativeLayout>
     </RefreshView>
 
